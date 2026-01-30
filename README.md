@@ -4,7 +4,7 @@
 
 The official starter template for [Jamdesk](https://jamdesk.com) documentation sites. Clone this repository to create beautiful, professional documentation in minutes.
 
-**[Live Demo](https://jamdesk.com/docs)** · **[Documentation](https://jamdesk.com/docs)** · **[Get Started](https://jamdesk.com/docs/quickstart)**
+**[Documentation](https://jamdesk.com/docs)** · **[Get Started](https://jamdesk.com/docs/quickstart)** · **[Dashboard](https://dashboard.jamdesk.com)**
 
 ## What is Jamdesk?
 
@@ -49,7 +49,11 @@ starter-docs/
 3. Connect your GitHub repository
 4. Start editing - changes deploy automatically
 
-### Option 2: Clone and Deploy
+### Option 2: Use This Template
+
+Click the green **"Use this template"** button at the top of this page to create your own repository based on this starter.
+
+### Option 3: Clone and Deploy
 
 ```bash
 # Clone this template
@@ -133,8 +137,9 @@ This is regular Markdown with **bold** and *italic* text.
 Preview your docs locally with hot reload:
 
 ```bash
-# Install the CLI
-npm install -g jamdesk
+# Install the CLI (choose one)
+npm install -g jamdesk          # via npm
+brew install jamdesk/tap/jamdesk # via Homebrew
 
 # Start the dev server
 jamdesk dev
