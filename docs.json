@@ -1,7 +1,7 @@
 {
-  "$schema": "https://jamdesk.com/docs.json",
-  "name": "Documentation",
-  "description": "Your documentation site powered by Jamdesk",
+  "$schema": "https://www.jamdesk.com/docs.json",
+  "name": "Acme Docs",
+  "description": "Acme Payments API documentation",
   "theme": "jam",
   "colors": {
     "primary": "#6366F1",
@@ -12,8 +12,11 @@
     "primary": {
       "type": "button",
       "label": "Get Started",
-      "href": "/introduction"
+      "href": "/quickstart"
     }
+  },
+  "api": {
+    "openapi": ["/openapi/acme.yaml"]
   },
   "navigation": {
     "tabs": [
@@ -25,7 +28,8 @@
             "group": "Get Started",
             "pages": [
               "introduction",
-              "quickstart"
+              "quickstart",
+              "configuration"
             ]
           },
           {
@@ -33,22 +37,25 @@
             "pages": [
               "writing/pages",
               "writing/components",
-              "writing/code-blocks"
+              "writing/code-blocks",
+              "writing/images"
             ]
-          }
-        ]
-      },
-      {
-        "tab": "Components",
-        "icon": "puzzle-piece",
-        "groups": [
+          },
           {
-            "group": "Components",
+            "group": "Component Reference",
             "pages": [
               "components/cards",
               "components/callouts",
               "components/tabs-and-accordions",
               "components/steps"
+            ]
+          },
+          {
+            "group": "API Reference",
+            "pages": [
+              "api-reference",
+              "api-reference/create-payment",
+              "api-reference/list-payments"
             ]
           }
         ]

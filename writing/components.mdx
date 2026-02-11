@@ -1,36 +1,48 @@
 ---
 title: Components
-description: Interactive components you can use in your docs
+description: MDX components available in your docs
 ---
 
-Jamdesk includes built-in components that you can use directly in your MDX files. No imports needed.
+Jamdesk includes built-in components you can drop into any MDX file. No imports needed — just use the tags.
 
 ## Available components
 
 | Component | Use for |
 |-----------|---------|
-| **Card** | Highlighting features, linking to pages |
-| **CardGroup** | Grid layouts of cards |
-| **Callout** | Notes, tips, warnings |
-| **Tabs** | Showing alternatives (languages, platforms) |
-| **Accordion** | Collapsible sections |
-| **Steps** | Sequential instructions |
+| **Card** | Feature highlights, page links |
+| **Columns** | Grid layouts |
+| **Note / Tip / Warning** | Callouts for important information |
+| **Tabs** | Language or platform switchers |
+| **Accordion** | Collapsible FAQ sections |
+| **Steps** | Setup guides, tutorials |
 | **CodeGroup** | Multi-language code examples |
+| **ParamField** | API parameters |
+| **ResponseField** | API response schemas |
+| **Frame** | Bordered screenshots |
 
-## Example
+## Quick example
 
-Here's a card with an icon that links to another page:
-
-<Card title="Quickstart Guide" icon="rocket" href="/quickstart">
-  Get up and running in minutes.
+<Card title="Authentication" icon="lock" href="/api-reference">
+  API keys, OAuth tokens, and rate limits.
 </Card>
 
 ```mdx
-<Card title="Quickstart Guide" icon="rocket" href="/quickstart">
-  Get up and running in minutes.
+<Card title="Authentication" icon="lock" href="/api-reference">
+  API keys, OAuth tokens, and rate limits.
 </Card>
 ```
 
 <Tip>
-Browse the **Components** tab in the sidebar to see live examples of every component.
+See the **Component Reference** section in the sidebar for live examples of every component.
 </Tip>
+
+## Next steps
+
+<Columns cols={2}>
+  <Card title="Cards" icon="grid-2" href="/components/cards">
+    Card layouts and grid arrangements.
+  </Card>
+  <Card title="Code Blocks" icon="code" href="/writing/code-blocks">
+    Syntax highlighting and code groups.
+  </Card>
+</Columns>

@@ -1,18 +1,18 @@
 ---
 title: Pages
-description: How to create and organize documentation pages
+description: How pages and frontmatter work
 ---
 
-Every `.mdx` file in your project becomes a page. The file path determines the URL.
+Every `.mdx` file becomes a page. The file path determines the URL.
 
 ## Frontmatter
 
-Each page starts with frontmatter — metadata between `---` fences:
+Each page starts with frontmatter between `---` fences:
 
 ```mdx
 ---
-title: My Page Title
-description: A short description for search engines
+title: Authentication
+description: API keys, OAuth tokens, and webhook signatures
 ---
 
 Your content starts here.
@@ -20,23 +20,24 @@ Your content starts here.
 
 | Field | Required | Description |
 |-------|----------|-------------|
-| `title` | Yes | Page title shown in the browser tab and sidebar |
+| `title` | Yes | Page title — browser tab and sidebar |
 | `description` | No | Meta description for SEO |
+| `sidebarTitle` | No | Shorter name for the sidebar (overrides `title`) |
+| `icon` | No | Font Awesome icon next to the page in the sidebar |
+| `openapi` | No | OpenAPI operation to auto-generate an API reference page |
 
-## File organization
-
-Your file structure maps directly to URLs:
+## File structure → URLs
 
 ```
 introduction.mdx        → /introduction
 quickstart.mdx          → /quickstart
-guides/deployment.mdx   → /guides/deployment
-api/users/list.mdx      → /api/users/list
+guides/webhooks.mdx     → /guides/webhooks
+api/payments/list.mdx   → /api/payments/list
 ```
 
-## Markdown features
+## Markdown
 
-MDX supports all standard Markdown:
+MDX supports everything in standard Markdown:
 
 - **Bold** and *italic* text
 - `Inline code` and fenced code blocks
@@ -46,5 +47,5 @@ MDX supports all standard Markdown:
 - Headings (`##`, `###`, `####`)
 
 <Note>
-Headings on the page automatically appear in the right sidebar as a table of contents.
+Headings automatically appear in the right sidebar as a table of contents.
 </Note>

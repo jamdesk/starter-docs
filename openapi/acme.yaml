@@ -1,0 +1,168 @@
+openapi: 3.0.3
+info:
+  title: Acme Payments API
+  version: "1.0.0"
+  description: Accept payments, send invoices, and manage subscriptions.
+servers:
+  - url: https://api.acme.com/v1
+security:
+  - bearerAuth: []
+paths:
+  /payments:
+    post:
+      summary: Create a payment
+      description: Charge a customer's payment method.
+      operationId: createPayment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreatePaymentRequest"
+            example:
+              amount: 2500
+              currency: "usd"
+              customer_id: "cus_abc123"
+              description: "Invoice #1042"
+      responses:
+        "201":
+          description: Payment created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Payment"
+              example:
+                id: "pay_1a2b3c"
+                amount: 2500
+                currency: "usd"
+                status: "succeeded"
+                customer:
+                  id: "cus_abc123"
+                  email: "jane@example.com"
+                created_at: "2025-09-15T14:30:00Z"
+        "400":
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+              example:
+                code: "invalid_request"
+                message: "amount must be a positive integer"
+    get:
+      summary: List payments
+      description: Returns a paginated list of payments for your account.
+      operationId: listPayments
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [succeeded, pending, failed]
+          description: Filter by payment status.
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+            maximum: 100
+          description: Number of results per page. Max 100.
+        - name: cursor
+          in: query
+          schema:
+            type: string
+          description: Pagination cursor from a previous response.
+      responses:
+        "200":
+          description: A paginated list of payments
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaymentList"
+              example:
+                data:
+                  - id: "pay_1a2b3c"
+                    amount: 2500
+                    currency: "usd"
+                    status: "succeeded"
+                    customer:
+                      id: "cus_abc123"
+                      email: "jane@example.com"
+                    created_at: "2025-09-15T14:30:00Z"
+                has_more: true
+                next_cursor: "pay_1a2b3c"
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    CreatePaymentRequest:
+      type: object
+      required:
+        - amount
+        - currency
+        - customer_id
+      properties:
+        amount:
+          type: integer
+          description: Amount in cents. `2500` = $25.00.
+        currency:
+          type: string
+          description: Three-letter ISO currency code.
+        customer_id:
+          type: string
+          description: ID of the customer to charge.
+        description:
+          type: string
+          description: Internal note attached to the payment.
+    Payment:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Payment ID. Starts with `pay_`.
+        amount:
+          type: integer
+          description: Amount in cents.
+        currency:
+          type: string
+          description: Three-letter ISO currency code.
+        status:
+          type: string
+          enum: [succeeded, pending, failed]
+          description: Current payment status.
+        customer:
+          $ref: "#/components/schemas/Customer"
+        created_at:
+          type: string
+          format: date-time
+    Customer:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Customer ID. Starts with `cus_`.
+        email:
+          type: string
+          description: Customer email address.
+    PaymentList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Payment"
+        has_more:
+          type: boolean
+          description: Whether more results exist beyond this page.
+        next_cursor:
+          type: string
+          description: Pass as `cursor` to fetch the next page.
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string

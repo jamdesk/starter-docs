@@ -1,29 +1,54 @@
 ---
 title: Introduction
-description: Welcome to your documentation
+description: Send invoices, process payments, and manage subscriptions with the Acme API
 ---
 
-Welcome to your documentation site. This starter project has everything you need to get up and running.
-
-## What's included
+Acme is a payments API for developers. Accept payments, send invoices, and manage subscriptions — all through a single REST API.
 
 <Columns cols={2}>
-  <Card title="Ready-made pages" icon="file-lines">
-    Example pages showing how to structure your docs with headings, lists, and components.
+  <Card title="Get your API key" icon="key" href="/quickstart">
+    Create an account and make your first API call in under 5 minutes.
   </Card>
-  <Card title="Component examples" icon="puzzle-piece">
-    Cards, callouts, tabs, steps, and more — all ready to use.
+  <Card title="API Reference" icon="code" href="/api-reference">
+    Endpoints, parameters, and response schemas for every resource.
   </Card>
-  <Card title="Auto-deploy" icon="rocket">
-    Push to GitHub and your docs build and deploy automatically.
+  <Card title="Configuration" icon="gear" href="/configuration">
+    Customize your docs site — branding, navigation, and themes.
   </Card>
-  <Card title="Customizable" icon="palette">
-    Change colors, logo, navigation, and theme in `docs.json`.
+  <Card title="Components" icon="puzzle-piece" href="/writing/components">
+    Cards, callouts, tabs, steps, and 20+ more MDX components.
   </Card>
 </Columns>
 
-## Next steps
+## How it works
 
-<Card title="Quickstart" icon="play" href="/quickstart">
-  Learn how to edit pages, customize your site, and deploy changes.
-</Card>
+<Steps>
+  <Step title="Install the SDK">
+    ```bash
+    npm install acme-sdk
+    ```
+  </Step>
+  <Step title="Create a payment">
+    ```javascript
+    import { Acme } from 'acme-sdk';
+
+    const acme = new Acme('sk_live_...');
+
+    const payment = await acme.payments.create({
+      amount: 2500,
+      currency: 'usd',
+      customer_id: 'cus_abc123',
+    });
+    ```
+  </Step>
+  <Step title="Handle the response">
+    ```javascript
+    console.log(payment.id);     // "pay_1a2b3c"
+    console.log(payment.status); // "succeeded"
+    ```
+  </Step>
+</Steps>
+
+<Note>
+This is a starter template. Replace this content with your own product documentation — the components and layout are ready to use.
+</Note>

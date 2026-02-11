@@ -1,0 +1,157 @@
+---
+title: Configuration
+description: Branding, navigation, and site settings in docs.json
+---
+
+Everything is in one file — `docs.json` at the root of your project.
+
+## Branding
+
+### Site name
+
+```json
+{
+  "name": "Acme Docs"
+}
+```
+
+### Logo
+
+```json
+{
+  "logo": {
+    "light": "/images/logo-light.svg",
+    "dark": "/images/logo-dark.svg"
+  }
+}
+```
+
+Put logo files in `/images` at your project root.
+
+### Favicon
+
+```json
+{
+  "favicon": "/images/favicon.svg"
+}
+```
+
+SVG favicons scale to any size and work in dark mode.
+
+### Colors
+
+```json
+{
+  "colors": {
+    "primary": "#6366F1",
+    "light": "#818CF8",
+    "dark": "#4F46E5"
+  }
+}
+```
+
+| Field | Description |
+|-------|-------------|
+| `primary` | Links, buttons, and accents |
+| `light` | Light mode accent (defaults to `primary`) |
+| `dark` | Dark mode accent (defaults to `primary`) |
+
+### Theme
+
+```json
+{
+  "theme": "jam"
+}
+```
+
+| Theme | Description |
+|-------|-------------|
+| `jam` | Clean, modern — Inter font |
+| `nebula` | Relaxed, airy — JetBrains Mono |
+| `pulsar` | Bold, high-contrast |
+
+## Navigation
+
+### Tabs and groups
+
+The sidebar is **tabs** containing **groups** of pages:
+
+```json
+{
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Guides",
+        "icon": "book-open",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": ["introduction", "quickstart"]
+          },
+          {
+            "group": "Advanced",
+            "pages": ["guides/webhooks", "guides/custom-domain"]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+Page paths are relative to the project root, without `.mdx`.
+
+### Navbar
+
+```json
+{
+  "navbar": {
+    "primary": {
+      "type": "button",
+      "label": "Dashboard",
+      "href": "https://app.acme.com"
+    },
+    "links": [
+      { "label": "GitHub", "href": "https://github.com/acme/sdk" },
+      { "label": "Blog", "href": "https://acme.com/blog" }
+    ]
+  }
+}
+```
+
+### External links in sidebar
+
+```json
+{
+  "group": "Resources",
+  "pages": [
+    { "title": "GitHub", "href": "https://github.com/acme" },
+    { "title": "Status", "href": "https://status.acme.com" }
+  ]
+}
+```
+
+## Redirects
+
+When you move or rename pages, add redirects so old URLs keep working:
+
+```json
+{
+  "redirects": [
+    { "from": "/getting-started", "to": "/quickstart" },
+    { "from": "/reference/auth", "to": "/api-reference" }
+  ]
+}
+```
+
+## Custom CSS
+
+```json
+{
+  "customCss": "/styles/custom.css"
+}
+```
+
+<Tip>
+For every available field, see the [full docs.json reference](https://jamdesk.com/docs/config/docs-json-reference).
+</Tip>

@@ -1,0 +1,70 @@
+---
+title: Images & Media
+description: Adding images and screenshots to your pages
+---
+
+## Adding images
+
+Standard Markdown:
+
+```markdown
+![Dashboard overview](/images/dashboard.png)
+```
+
+Put image files in `/images` at your project root:
+
+```
+your-project/
+├── docs.json
+├── images/
+│   ├── dashboard.png
+│   ├── webhook-flow.png
+│   └── logo.svg
+├── introduction.mdx
+└── quickstart.mdx
+```
+
+## Sizing
+
+Append dimensions after the URL:
+
+```markdown
+![Screenshot](/images/dashboard.png =600x400)
+```
+
+Width only (height scales automatically):
+
+```markdown
+![Banner](/images/banner.png =800x)
+```
+
+## Frame
+
+`Frame` adds a border and optional caption — useful for screenshots:
+
+```mdx
+<Frame caption="The payments dashboard">
+  ![Dashboard](/images/dashboard.png)
+</Frame>
+```
+
+If you frame one screenshot in a guide, frame all of them for consistency.
+
+## Light and dark mode
+
+Show different images based on the user's color scheme:
+
+```mdx
+<img
+  src="/images/diagram-light.png"
+  srcDark="/images/diagram-dark.png"
+  alt="Architecture diagram"
+/>
+```
+
+## Tips
+
+- **Descriptive alt text** — screen readers and search engines need it
+- **Under 500KB** — PNG for screenshots, JPEG for photos, SVG for diagrams
+- **WebP** where possible — smaller files, same quality
+- **Clear names** — `webhook-flow.png` not `img_001.png`

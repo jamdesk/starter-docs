@@ -1,23 +1,29 @@
 ---
 title: Steps
-description: Show sequential instructions
+description: Sequential instructions
 ---
 
-Use Steps for ordered instructions:
-
 <Steps>
-  <Step title="Install the CLI">
+  <Step title="Install the SDK">
     ```bash
-    npm install -g jamdesk
+    npm install acme-sdk
     ```
   </Step>
-  <Step title="Initialize your project">
-    ```bash
-    jamdesk init
+  <Step title="Initialize the client">
+    ```javascript
+    import { Acme } from 'acme-sdk';
+    const acme = new Acme('sk_live_abc123');
     ```
   </Step>
-  <Step title="Start writing">
-    Open your project and create `.mdx` files. Each file becomes a page in your docs.
+  <Step title="Create a payment">
+    ```javascript
+    const payment = await acme.payments.create({
+      amount: 2500,
+      currency: 'usd',
+      customer_id: 'cus_abc123',
+    });
+    console.log(payment.status); // "succeeded"
+    ```
   </Step>
 </Steps>
 
@@ -26,14 +32,14 @@ Use Steps for ordered instructions:
 ```mdx
 <Steps>
   <Step title="First step">
-    Description of what to do.
+    What to do.
   </Step>
   <Step title="Second step">
-    Next instruction.
+    What to do next.
   </Step>
 </Steps>
 ```
 
 <Tip>
-Steps work well for setup guides, tutorials, and getting-started flows.
+Steps work well for setup guides, tutorials, and onboarding flows.
 </Tip>

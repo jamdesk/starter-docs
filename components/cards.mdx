@@ -1,80 +1,84 @@
 ---
 title: Cards
-description: Highlight content with visual cards
+description: Highlight features and link to other pages
 ---
 
 ## Basic card
 
-<Card title="Getting Started">
-  A simple card with a title and content.
+<Card title="Authentication">
+  Every API request requires a Bearer token in the `Authorization` header.
 </Card>
 
 ```mdx
-<Card title="Getting Started">
-  A simple card with a title and content.
+<Card title="Authentication">
+  Every API request requires a Bearer token in the `Authorization` header.
 </Card>
 ```
 
-## Card with icon
+## With icon
 
-<Card title="Documentation" icon="book">
-  Add an icon for visual emphasis.
+<Card title="SDKs" icon="box">
+  Official client libraries for Node.js, Python, Go, and Ruby.
 </Card>
 
 ```mdx
-<Card title="Documentation" icon="book">
-  Add an icon for visual emphasis.
+<Card title="SDKs" icon="box">
+  Official client libraries for Node.js, Python, Go, and Ruby.
 </Card>
 ```
 
-## Card with link
+## With link
 
-<Card title="Quickstart Guide" icon="play" href="/quickstart">
-  Cards can link to other pages.
+<Card title="Quickstart" icon="play" href="/quickstart">
+  Make your first API call in under 5 minutes.
 </Card>
 
 ```mdx
-<Card title="Quickstart Guide" icon="play" href="/quickstart">
-  Cards can link to other pages.
+<Card title="Quickstart" icon="play" href="/quickstart">
+  Make your first API call in under 5 minutes.
 </Card>
 ```
 
-## Card group
+## Grid layout
 
-Use `CardGroup` to arrange cards in a grid:
+Use `Columns` to arrange cards side by side:
 
 <Columns cols={2}>
-  <Card title="Docs" icon="book">
-    Documentation
+  <Card title="Payments" icon="credit-card">
+    Charge cards, send invoices, manage refunds.
   </Card>
-  <Card title="API" icon="code">
-    API Reference
+  <Card title="Customers" icon="users">
+    Store payment methods and billing details.
   </Card>
-  <Card title="Guides" icon="graduation-cap">
-    Tutorials
+  <Card title="Webhooks" icon="bell">
+    Get notified when events happen in your account.
   </Card>
-  <Card title="Support" icon="life-ring">
-    Get help
+  <Card title="Testing" icon="flask">
+    Sandbox environment with test API keys.
   </Card>
 </Columns>
 
 ```mdx
 <Columns cols={2}>
-  <Card title="Docs" icon="book">Documentation</Card>
-  <Card title="API" icon="code">API Reference</Card>
+  <Card title="Payments" icon="credit-card">
+    Charge cards, send invoices, manage refunds.
+  </Card>
+  <Card title="Customers" icon="users">
+    Store payment methods and billing details.
+  </Card>
 </Columns>
 ```
 
 ## Properties
 
 <ParamField name="title" type="string" required>
-  The title displayed at the top of the card.
+  Card heading text.
 </ParamField>
 
 <ParamField name="icon" type="string">
-  Font Awesome icon name (e.g., "book", "code", "rocket").
+  Font Awesome icon name (e.g., `book`, `code`, `rocket`).
 </ParamField>
 
 <ParamField name="href" type="string">
-  URL the card links to.
+  URL the card links to. Can be a relative path or external URL.
 </ParamField>

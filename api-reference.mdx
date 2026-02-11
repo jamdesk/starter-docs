@@ -1,0 +1,56 @@
+---
+title: API Reference
+description: Two ways to document your API — OpenAPI or hand-authored
+---
+
+## From an OpenAPI spec
+
+If you have an OpenAPI spec, drop it in the `/openapi` directory and point a page at it. Jamdesk auto-generates the full endpoint documentation — parameters, response schemas, and code examples.
+
+```mdx
+---
+title: Create Payment
+openapi: /openapi/acme.yaml POST /payments
+---
+```
+
+One line of frontmatter, and you get a complete API reference page.
+
+Register your spec in `docs.json` for build-time validation:
+
+```json
+{
+  "api": {
+    "openapi": ["/openapi/acme.yaml"]
+  }
+}
+```
+
+Check the **Create Payment** and **List Payments** pages in the sidebar — they're auto-generated from the sample spec included in this starter.
+
+## Hand-authored
+
+No OpenAPI spec? Write endpoints directly with `ParamField` and `ResponseField`:
+
+```mdx
+<ParamField query="status" type="string">
+  Filter by payment status. One of `succeeded`, `pending`, `failed`.
+</ParamField>
+
+<ResponseField name="id" type="string" required>
+  Payment ID. Starts with `pay_`.
+</ResponseField>
+```
+
+| Component | Use for |
+|-----------|---------|
+| `<ParamField path="...">` | URL path params (`/users/{id}`) |
+| `<ParamField query="...">` | Query string (`?limit=10`) |
+| `<ParamField body="...">` | Request body fields |
+| `<ParamField header="...">` | HTTP headers |
+| `<ResponseField>` | Response fields |
+| `<Expandable>` | Nested objects inside a ResponseField |
+
+<Tip>
+OpenAPI is the faster path if you already have a spec. Hand-authored is better when you want full control over the layout, or when your API doesn't have a spec yet.
+</Tip>

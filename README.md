@@ -25,8 +25,16 @@ This starter template includes everything you need to get started:
 ```
 starter-docs/
 ├── docs.json              # Site configuration (theme, colors, navigation)
-├── introduction.mdx       # Welcome page
+├── introduction.mdx       # Welcome page (sample product docs)
 ├── quickstart.mdx         # Getting started guide
+├── configuration.mdx      # Branding, navigation, and site settings
+├── api-reference.mdx      # API docs overview (OpenAPI + hand-authored)
+├── api-reference/         # Auto-generated from OpenAPI spec
+│   ├── create-payment.mdx
+│   └── list-payments.mdx
+├── openapi/               # OpenAPI spec files
+│   └── acme.yaml
+├── images/                # Place images and screenshots here
 ├── components/            # Component examples
 │   ├── callouts.mdx       # Notes, warnings, tips
 │   ├── cards.mdx          # Card layouts
@@ -35,6 +43,7 @@ starter-docs/
 └── writing/               # Content writing guides
     ├── code-blocks.mdx    # Syntax highlighting
     ├── components.mdx     # Using MDX components
+    ├── images.mdx         # Images and media
     └── pages.mdx          # Page structure
 ```
 
@@ -61,7 +70,8 @@ git clone https://github.com/jamdesk/starter-docs.git my-docs
 cd my-docs
 
 # Preview locally (requires Jamdesk CLI)
-npm install -g jamdesk
+npm install -g jamdesk          # via npm
+brew install jamdesk/tap/jamdesk # via Homebrew (alternative)
 jamdesk dev
 
 # Open http://localhost:3000
@@ -91,7 +101,7 @@ Change the theme in `docs.json`:
 
 ```json
 {
-  "theme": "jam"      // Options: "jam", "nebula", "pulsar"
+  "theme": "jam"
 }
 ```
 
@@ -112,25 +122,25 @@ All content is written in MDX - Markdown with React components:
 
 ```mdx
 ---
-title: My Page
-description: A brief description for SEO
+title: Authentication
+description: API keys, OAuth tokens, and webhook signatures
 ---
 
-# Welcome
+## API Keys
 
-This is regular Markdown with **bold** and *italic* text.
+Every request requires a Bearer token in the `Authorization` header.
 
 <Note>
-  This is a callout component for important information.
+  Use test keys (`sk_test_...`) during development. No real charges are created.
 </Note>
 
 <Steps>
-  <Step title="First">Do this first</Step>
-  <Step title="Second">Then do this</Step>
+  <Step title="Get your key">Go to **Settings → API Keys** in the dashboard.</Step>
+  <Step title="Add to your request">Pass it as a Bearer token in the Authorization header.</Step>
 </Steps>
 ```
 
-**Available components:** Cards, Tabs, Accordions, Steps, Callouts, Code Groups, and [25+ more →](https://jamdesk.com/docs/components/overview)
+**Available components:** Cards, Tabs, Accordions, Steps, Callouts, Code Groups, and [20+ more →](https://jamdesk.com/docs/components/overview)
 
 ## Local Development
 

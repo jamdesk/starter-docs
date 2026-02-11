@@ -1,65 +1,72 @@
 ---
 title: Tabs & Accordions
-description: Organize content with tabs and collapsible sections
+description: Tabbed content and collapsible sections
 ---
 
 ## Tabs
 
-Show content in switchable panels:
+Show the same thing across languages or platforms:
 
 <Tabs>
-  <Tab title="React">
-    ```jsx
-    function App() {
-      return <h1>Hello React</h1>;
-    }
+  <Tab title="Node.js">
+    ```javascript
+    const acme = new Acme('sk_live_abc123');
+    const payment = await acme.payments.create({
+      amount: 2500,
+      currency: 'usd',
+    });
     ```
   </Tab>
-  <Tab title="Vue">
-    ```html
-    <template>
-      <h1>Hello Vue</h1>
-    </template>
+  <Tab title="Python">
+    ```python
+    acme = Acme('sk_live_abc123')
+    payment = acme.payments.create(
+        amount=2500,
+        currency='usd',
+    )
     ```
   </Tab>
-  <Tab title="Svelte">
-    ```html
-    <h1>Hello Svelte</h1>
+  <Tab title="cURL">
+    ```bash
+    curl https://api.acme.com/v1/payments \
+      -H "Authorization: Bearer sk_live_abc123" \
+      -d amount=2500 \
+      -d currency=usd
     ```
   </Tab>
 </Tabs>
 
 ```mdx
 <Tabs>
-  <Tab title="React">
-    Content for the React tab.
+  <Tab title="Node.js">
+    Content for the Node.js tab.
   </Tab>
-  <Tab title="Vue">
-    Content for the Vue tab.
+  <Tab title="Python">
+    Content for the Python tab.
   </Tab>
 </Tabs>
 ```
 
 ## Accordions
 
-Collapsible sections for optional details:
+Good for FAQs and optional details:
 
 <AccordionGroup>
-  <Accordion title="What is Jamdesk?">
-    Jamdesk is a documentation platform that builds and hosts your docs from MDX files in a GitHub repository.
+  <Accordion title="How do I get my API key?">
+    Sign up at [app.acme.com](https://app.acme.com) and navigate to **Settings → API Keys**. You'll get a test key and a live key.
   </Accordion>
-  <Accordion title="How do I deploy?">
-    Push to GitHub. Jamdesk builds and deploys automatically on every push.
+  <Accordion title="What currencies do you support?">
+    Over 135 currencies. Pass a three-letter ISO code (e.g., `usd`, `eur`, `gbp`) in the `currency` field.
   </Accordion>
-  <Accordion title="Can I use a custom domain?">
-    Yes. Configure your custom domain in the Jamdesk dashboard under project settings.
+  <Accordion title="Is there a sandbox for testing?">
+    Yes. Use your `sk_test_` key and no real charges are created. Test card number: `4242 4242 4242 4242`.
   </Accordion>
 </AccordionGroup>
 
 ```mdx
 <AccordionGroup>
-  <Accordion title="Question here">
-    Answer here.
+  <Accordion title="Your question here">
+    The answer.
   </Accordion>
 </AccordionGroup>
 ```
