@@ -1,95 +1,75 @@
 ---
 title: Quickstart
-description: "Edit MDX files, customize your theme and navigation, and deploy your documentation site — all from a single GitHub repo."
+description: Edit, customize, and deploy your docs
 ---
 
-Your docs are MDX files in a GitHub repo. Push a commit, and the site rebuilds automatically.
+Your docs are built from MDX files in this repository. Every push to GitHub triggers an automatic build and deploy.
 
 ## Edit a page
 
-Open any `.mdx` file and start writing. MDX is Markdown with components baked in.
+Open any `.mdx` file and start writing. MDX supports standard Markdown plus Jamdesk components.
 
-````mdx
+```mdx
 ---
-title: Authentication
-description: API keys, OAuth tokens, and webhook signatures
+title: My Page
+description: A brief description for SEO
 ---
 
-## API Keys
+# Heading
 
-Every request requires an API key in the `Authorization` header:
-
-<CodeGroup>
-```bash cURL
-curl https://api.acme.com/v1/payments \
-  -H "Authorization: Bearer sk_live_abc123"
+Regular markdown works — **bold**, *italic*, `code`, [links](https://example.com).
 ```
-
-```javascript Node.js
-const acme = new Acme('sk_live_abc123');
-```
-</CodeGroup>
-````
 
 ## Add a new page
 
 <Steps>
   <Step title="Create an MDX file">
-    Add a file anywhere in your project — for example, `guides/webhooks.mdx`.
+    Add a new `.mdx` file anywhere in your project, for example `guides/deployment.mdx`.
   </Step>
   <Step title="Add it to navigation">
-    Open `docs.json` and add the page path to a group:
+    Open `docs.json` and add the page path to the `navigation` section:
 
     ```json
     {
       "group": "Guides",
-      "pages": ["guides/webhooks"]
+      "pages": ["guides/deployment"]
     }
     ```
   </Step>
   <Step title="Push to GitHub">
-    Commit and push. The site rebuilds in about 30 seconds.
+    Commit and push. Your site will rebuild automatically.
   </Step>
 </Steps>
 
 ## Customize your site
 
-Everything lives in `docs.json`:
+Everything is configured in `docs.json`:
 
 | Setting | What it does |
 |---------|-------------|
-| `name` | Site name in the header |
-| `colors` | Brand colors (primary, light, dark) |
-| `logo` | Light and dark mode logos |
-| `theme` | Visual theme — `jam`, `nebula`, or `pulsar` |
-| `navigation` | Sidebar groups and page order |
-| `navbar` | Top nav links and buttons |
+| `name` | Site name shown in the header |
+| `colors` | Primary, light, and dark accent colors |
+| `logo` | Light and dark mode logo images |
+| `theme` | Visual theme (`jam`, `nebula`, or `pulsar`) |
+| `navigation` | Sidebar tabs, groups, and page order |
+| `navbar` | Top navigation links and buttons |
 
 <Tip>
-See the [full configuration reference](https://jamdesk.com/docs/config/docs-json-reference) for every available field.
+See the full configuration reference at [jamdesk.com/docs](https://jamdesk.com/docs).
 </Tip>
 
 ## Use the CLI
 
+Install the Jamdesk CLI for local development:
+
 ```bash
-# Install (pick one)
 npm install -g jamdesk
-brew install jamdesk/tap/jamdesk
 ```
+
+Preview your docs locally:
 
 ```bash
-jamdesk dev           # Local preview with hot reload
-jamdesk validate      # Check docs.json and frontmatter for errors
-jamdesk broken-links  # Find broken internal links
+jamdesk dev
 ```
 
-## Next steps
-
-<Columns cols={2}>
-  <Card title="Configuration" icon="gear" href="/configuration">
-    Branding, navigation, and site settings.
-  </Card>
-  <Card title="Pages & Frontmatter" icon="file-lines" href="/writing/pages">
-    Page structure and metadata fields.
-  </Card>
-</Columns>
+This starts a local server with hot reload so you can see changes instantly.

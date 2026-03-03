@@ -1,54 +1,52 @@
 ---
 title: Callouts
-description: "Highlight important information with Note, Warning, Tip, and Info callout components — draw attention to gotchas, best practices, and prerequisites."
+description: Highlight important information
 ---
+
+Callouts draw attention to key information.
 
 ## Types
 
 <Note>
-All API requests must include an `Authorization` header. See [Authentication](/api-reference) for details.
+Helpful context or additional information.
 </Note>
 
-<Info>
-Acme processes payments in over 135 currencies. Pass a three-letter ISO code in the `currency` field.
-</Info>
-
 <Tip>
-Use test mode API keys (`sk_test_...`) during development. No real charges are created.
+Best practices or optimization suggestions.
 </Tip>
 
 <Warning>
-Webhook endpoints must return a `200` status within 30 seconds or the delivery will be retried.
+Important caveats or requirements.
 </Warning>
 
 <Danger>
-Deleting a customer permanently removes all their payment methods and invoices. This cannot be undone.
+Critical warnings — actions that could cause data loss.
 </Danger>
 
 <Check>
-Your API key is valid and your account is ready to accept payments.
+Success confirmations or completed steps.
 </Check>
 
 ## Usage
 
 ```mdx
 <Note>
-All API requests must include an `Authorization` header.
+Helpful context or additional information.
 </Note>
 
 <Warning>
-Webhook endpoints must return a `200` within 30 seconds.
+Important caveats or requirements.
 </Warning>
 ```
 
-## Custom title
+## With custom title
 
-<Note title="Rate limits">
-The API allows 1,000 requests per minute. Requests beyond the limit return `429 Too Many Requests`.
+<Note title="Did you know?">
+You can use **Markdown** inside callouts, including `code` and [links](/introduction).
 </Note>
 
 ```mdx
-<Note title="Rate limits">
-The API allows 1,000 requests per minute.
+<Note title="Did you know?">
+You can use **Markdown** inside callouts.
 </Note>
 ```
