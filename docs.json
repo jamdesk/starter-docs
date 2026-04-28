@@ -8,6 +8,24 @@
     "light": "#818CF8",
     "dark": "#4F46E5"
   },
+  "api": {
+    "openapi": [
+      "/openapi/example-api.yaml"
+    ],
+    "examples": {
+      "languages": [
+        "curl",
+        "python",
+        "javascript",
+        "go",
+        "ruby",
+        "csharp",
+        "java",
+        "rust",
+        "php"
+      ]
+    }
+  },
   "navbar": {
     "primary": {
       "type": "button",
@@ -34,6 +52,17 @@
               "writing/pages",
               "writing/components",
               "writing/code-blocks"
+            ]
+          },
+          {
+            "group": "API Pages",
+            "icon": "plug",
+            "pages": [
+              {
+                "page": "api-reference/openapi-example",
+                "title": "OpenAPI Example"
+              },
+              "api-reference/request-response-examples"
             ]
           }
         ]
