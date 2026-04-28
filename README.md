@@ -27,11 +27,16 @@ starter-docs/
 ├── docs.json              # Site configuration (theme, colors, navigation)
 ├── introduction.mdx       # Welcome page
 ├── quickstart.mdx         # Getting started guide
+├── api-reference/         # API documentation example pages
+│   ├── openapi-example.mdx          # Live-rendered OpenAPI endpoint
+│   └── request-response-examples.mdx # Hand-authored request/response demo
 ├── components/            # Component examples
 │   ├── callouts.mdx       # Notes, warnings, tips
 │   ├── cards.mdx          # Card layouts
 │   ├── steps.mdx          # Step-by-step guides
 │   └── tabs-and-accordions.mdx
+├── openapi/               # OpenAPI specification files
+│   └── example-api.yaml   # Sample Acme Support API spec
 └── writing/               # Content writing guides
     ├── code-blocks.mdx    # Syntax highlighting
     ├── components.mdx     # Using MDX components
