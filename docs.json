@@ -1,7 +1,6 @@
 {
   "$schema": "https://jamdesk.com/docs.json",
   "name": "Documentation",
-  "description": "Your documentation site powered by Jamdesk",
   "theme": "jam",
   "colors": {
     "primary": "#635BFF",
